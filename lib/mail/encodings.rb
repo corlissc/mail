@@ -265,22 +265,8 @@ module Mail
       results = []
       previous_encoding = nil
       lines = str.split(FULL_ENCODED_VALUE)
-      lines.each_slice(2) do |unencoded, encoded|
-        if encoded
-          encoding = value_encoding_from_string(encoded)
-          if encoding == previous_encoding && unencoded.blank?
-            results.last << encoded
-          else
-            results << unencoded unless unencoded == EMPTY
-            results << encoded
-          end
-          previous_encoding = encoding
-        else
-          results << unencoded
-        end
-      end
-
-      results
+      
+      lines
     end
   end
 end
