@@ -268,21 +268,7 @@ module Mail
     #
     # String has to be of the format =?<encoding>?[QB]?<string>?=
     def Encodings.collapse_adjacent_encodings(str)
-      #Array(str.split(/(\?=)\s*(=\?)/).join)
-      lines = str.split(/(\?=)\s*(=\?)/).each_slice(2).map(&:join)
-      results = []
-      previous_encoding = nil
-      lines.each do |line|
-        encoding = split_value_encoding_from_string(line)
-        if encoding == previous_encoding
-          line = results.pop + line
-        end
-        
-        previous_encoding = encoding
-        results << line
-      end
-      
-      results
+      Array(str.split(/(\?=)\s*(=\?)/).join)
     end
   end
 end
