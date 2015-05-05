@@ -899,6 +899,10 @@ describe Mail::Encodings do
       convert "A=?iso-2022-jp?B?X=?==?iso-2022-jp?B?Y=?=B", ["A", "=?iso-2022-jp?B?X=?=", "=?iso-2022-jp?B?Y=?=", "B"]
     end
 
+    it "does not keep the separator character between two different encodings" do
+      convert "=?iso-2022-jp?B?X=?=\n=?iso-2022-jp?Q?Y=?=", ["=?iso-2022-jp?B?X=?=", "=?iso-2022-jp?B?Y=?="]
+    end
+
     it "splits adjacent encodings without unencoded" do
       convert "=?iso-2022-jp?B?X=?==?iso-2022-jp?B?Y=?=", ["=?iso-2022-jp?B?X=?=", "=?iso-2022-jp?B?Y=?="]
     end
