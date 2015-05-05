@@ -900,7 +900,7 @@ describe Mail::Encodings do
     end
 
     it "does not keep the separator character between two different encodings" do
-      convert "=?iso-2022-jp?B?X=?=\n=?iso-2022-jp?Q?Y=?=", ["=?iso-2022-jp?B?X=?=", "=?iso-2022-jp?B?Y=?="]
+      convert "=?iso-2022-jp?B?X=?=\n=?utf-8?Q?Y=?=", ["=?iso-2022-jp?B?X=?=", "=?utf-8?Q?Y=?="]
     end
 
     it "splits adjacent encodings without unencoded" do
